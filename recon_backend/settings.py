@@ -1,13 +1,28 @@
+import os
 from pathlib import Path
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-recon-dev-key-change-in-production"
+# SECURITY WARNING: keep the secret key used in production secret!
+# Fetches from environment or falls back to a temporary dev key safely
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY", 
+    "django-insecure-recon-dev-key-change-in-production"
+)
 
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production!
+# Automatically set to False if not explicitly configured as True in the environment
+DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() in ("true", "1", "t")
 
-ALLOWED_HOSTS = ["*"]
+# SECURITY WARNING: strictly limit allowed host patterns to prevent Host Header attacks
+# Fetches a comma-separated list from the host server config
+ALLOWED_HOSTS = os.environ.get(
+    "DJANGO_ALLOWED_HOSTS", 
+    "127.0.0.1,localhost"
+).split(",")
 
+# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -47,6 +62,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "recon_backend.wsgi.application"
 
+# Database
+# For true high-performance production, wire an environment variable wrapper here as well
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -54,6 +71,7 @@ DATABASES = {
     }
 }
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -61,11 +79,22 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+# Internationalization
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
+# CRITICAL FIX: Explicit path where collectstatic engine drops final optimized elements
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Security enhancements triggered when running in non-debug mode
+if not DEBUG:
+    SECURE_SSL_REDIRECT = os.environ.get("SECURE_SSL_REDIRECT", "True") == "True"
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True

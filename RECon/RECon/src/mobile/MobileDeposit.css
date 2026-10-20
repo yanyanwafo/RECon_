@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Literata:wght@400;600&family=Manrope:wght@400;700&display=swap');
+
+.recon-d {
+  --bg: #fff8f3;
+  --ink: #211b0f;
+  --ink-soft: #46483d;
+  --muted: #77786c;
+  --green: #586037;
+  --green-text: #5d6949;
+  --green-tint: #dae8c0;
+
+  --font-head: 'Literata', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  display: flex;
+  justify-content: center;
+}
+.recon-d *,
+.recon-d *::before,
+.recon-d *::after {
+  box-sizing: border-box;
+}
+.recon-d p,
+.recon-d h2 {
+  margin: 0;
+}
+.recon-d__shell {
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+}
+
+/* ---------- top bar ---------- */
+.recon-d__topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+.recon-d__topbar img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.recon-d__status {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+}
+
+/* ---------- page behind the sheet ---------- */
+.recon-d__main {
+  padding: 96px 16px 128px; /* clears fixed top bar + bottom nav */
+  transition: opacity 0.2s;
+}
+.recon-d__main.is-dimmed {
+  opacity: 0.2;
+}
+
+/* ---------- scrim + sheet ---------- */
+.recon-d__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(55, 47, 34, 0.4);
+  backdrop-filter: blur(1px);
+}
+.recon-d__sheet {
+  width: 100%;
+  max-width: 430px;
+  max-height: 100dvh;
+  overflow-y: auto;
+  background: var(--bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0 20px 60px -10px rgba(53, 64, 36, 0.25);
+  animation: recon-d-up 0.28s ease-out;
+}
+@keyframes recon-d-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recon-d__sheet { animation: none; }
+}
+
+.recon-d__sheet-head {
+  position: relative;
+  overflow: hidden;
+  height: 192px;
+  background: var(--green-tint);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.recon-d__blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(32px);
+  pointer-events: none;
+}
+.recon-d__blob--a {
+  width: 192px;
+  height: 192px;
+  top: -48px;
+  left: -48px;
+  background: rgba(88, 96, 55, 0.1);
+}
+.recon-d__blob--b {
+  width: 256px;
+  height: 256px;
+  top: -16px;
+  right: -60px;
+  background: rgba(131, 114, 85, 0.1);
+}
+.recon-d__check {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 9999px;
+  background: var(--bg);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.recon-d__sheet-head h2 {
+  position: relative;
+  color: var(--green-text);
+  font-family: var(--font-head);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.recon-d__sheet-body {
+  padding: 24px 24px calc(24px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.recon-d__cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.recon-d__label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.recon-d__accepted {
+  min-height: 90px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff2e1;
+  border: 1px solid rgba(199, 199, 185, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #71794e;
+}
+.recon-d__accepted .recon-d__label {
+  color: var(--muted);
+}
+.recon-d__value {
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.recon-d__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.recon-d__earned,
+.recon-d__total {
+  padding: 24px;
+  border-radius: 16px;
+}
+.recon-d__earned {
+  background: rgba(218, 232, 192, 0.5);
+  border: 1px solid rgba(190, 204, 166, 0.3);
+  color: var(--green);
+}
+.recon-d__earned .recon-d__label {
+  color: var(--green-text);
+}
+.recon-d__total {
+  background: rgba(245, 224, 188, 0.3);
+  border: 1px solid rgba(216, 196, 161, 0.3);
+  color: #695a3e;
+}
+.recon-d__total .recon-d__label {
+  color: #53452b;
+}
+.recon-d__mins {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-head);
+}
+.recon-d__mins strong {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.recon-d__mins span {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.recon-d__note {
+  max-width: 318px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.recon-d__actions {
+  width: 100%;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.recon-d__activate {
+  width: 100%;
+  padding: 20px 0;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--green);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.recon-d__close {
+  width: 100%;
+  padding: 16px 0;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+}
+.recon-d__activate:active,
+.recon-d__close:active {
+  transform: scale(0.98);
+}
+.recon-d button:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+}

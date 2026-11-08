@@ -1,0 +1,70 @@
+   body {
+    background-color: #090d16 !important;
+    color: #e2e8f0 !important;
+}
+
+#header {
+    background: #064e3b !important;
+    color: #ffffff !important;
+    border-bottom: 3px solid #f59e0b !important;
+}
+
+#header a:link, #header a:visited {
+    color: #f3f4f6 !important;
+}
+
+#header #branding h1 span {
+    color: #f59e0b !important;
+}
+
+#changelist table, .results table {
+    background: #0f172a !important;
+    border: 1px solid #065f46 !important;
+    border-radius: 6px !important;
+}
+
+#changelist table th, .results table th {
+    background: #065f46 !important;
+    color: #ffffff !important;
+}
+
+#changelist table tbody tr td, .results table tbody tr td {
+    border-bottom: 1px solid #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+#changelist table tbody tr:hover, .results table tbody tr:hover {
+    background: rgba(6, 95, 70, 0.2) !important;
+}
+
+fieldset.module {
+    background: #0f172a !important;
+    border: 1px solid #065f46 !important;
+    border-radius: 8px !important;
+}
+
+fieldset.module h2 {
+    background: #064e3b !important;
+    color: #ffffff !important;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number], select, textarea {
+    background-color: #1e293b !important;
+    border: 1px solid #065f46 !important;
+    color: #f8fafc !important;
+}
+
+/* Buttons */
+.button, input[type=submit], .submit-row input {
+    background: #065f46 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+}
+
+.button:hover, input[type=submit]:hover {
+    background: #059669 !important;
+}
+    .theme-toggle {
+    display: none !important;
+}

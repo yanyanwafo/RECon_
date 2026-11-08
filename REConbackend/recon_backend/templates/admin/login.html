@@ -1,0 +1,66 @@
+{% extends "admin/login.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <style>
+  
+    body.login {
+        background-color: #090d16 !important;
+    }
+
+    body.login #container {
+        background: #0f172a !important;
+        border: 1px solid #065f46 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+        overflow: hidden !important;
+    }
+
+    body.login #header,
+    body.login .login #header,
+    body.login #content-main div.login h1 {
+        background: #064e3b !important;
+        color: #ffffff !important;
+        border-bottom: 2px solid #f59e0b !important;
+    }
+    
+    .login #container > div:first-child {
+        background: #064e3b !important;
+        color: #ffffff !important;
+    }
+
+    body.login input[type="text"], 
+    body.login input[type="password"] {
+        background-color: #1e293b !important;
+        border: 1px solid #065f46 !important;
+        color: #f8fafc !important;
+        border-radius: 4px !important;
+        padding: 8px 12px !important;
+    }
+
+    body.login input[type="text"]:focus, 
+    body.login input[type="password"]:focus {
+        border-color: #f59e0b !important;
+        box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+    }
+    
+    .theme-toggle {
+    display: none !important;
+    }
+
+    body.login .submit-row input {
+        background: #064e3b !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 4px !important;
+        padding: 8px 16px !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+    }
+
+    body.login .submit-row input:hover {
+        background: #059669 !important;
+    }
+  </style>
+{% endblock %}

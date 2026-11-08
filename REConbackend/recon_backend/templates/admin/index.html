@@ -1,0 +1,138 @@
+{% extends "admin/index.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom_admin.css' %}" />
+  <style>
+    
+    body {
+        background-color: #090d16 !important;
+        color: #e2e8f0 !important;
+    }
+
+    #header {
+        background: #064e3b !important;
+        color: #ffffff !important;
+        border-bottom: 3px solid #f59e0b !important;
+    }
+    
+    #header a:link, #header a:visited {
+        color: #f3f4f6 !important;
+    }
+
+    .dashboard .module {
+        background: #0f172a !important;
+        border: 1px solid #065f46 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        overflow: hidden !important;
+        margin-bottom: 25px !important;
+    }
+
+    .dashboard .module caption, 
+    .dashboard .module th,
+    #content-main .module h2,
+    .app-deposits caption,
+    .app-auth caption {
+        background: #065f46 !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        padding: 12px 15px !important;
+    }
+
+    .dashboard .module table tr td {
+        border-bottom: 1px solid #1e293b !important;
+    }
+
+    .dashboard .module table tr td a {
+        color: #ffffff !important;
+        font-weight: 500;
+    }
+
+    .dashboard .module table tr td a:hover {
+        color: #34d399 !important;
+    }
+
+    .dashboard .module table tr:hover {
+        background: rgba(6, 95, 70, 0.25) !important;
+    }
+
+    .dashboard .module table tr td .addlink, 
+    .dashboard .module table tr td .changelink {
+        background-color: #064e3b !important;
+        color: #ffffff !important;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    
+    .dashboard .module table tr td .addlink:hover, 
+    .dashboard .module table tr td .changelink:hover {
+        background-color: #059669 !important;
+    }
+
+    #content-related .module {
+        background: #0f172a !important;
+        border: 1px solid #065f46 !important;
+        border-radius: 8px !important;
+    }
+
+    #content-related h2 {
+        background: #064e3b !important;
+        color: #ffffff !important;
+    }
+
+    body.login {
+        background-color: #090d16 !important;
+    }
+
+    body.login #container {
+        background: #0f172a !important;
+        border: 1px solid #065f46 !important;
+        border-radius: 10px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+        overflow: hidden !important;
+    }
+
+    body.login #header {
+        background: #064e3b !important;
+        border-bottom: 3px solid #f59e0b !important;
+    }
+
+    body.login .form-row {
+        border-bottom: none !important;
+    }
+
+    body.login input[type="text"], 
+    body.login input[type="password"] {
+        background-color: #1e293b !important;
+        border: 1px solid #065f46 !important;
+        color: #f8fafc !important;
+        border-radius: 4px !important;
+        padding: 8px 12px !important;
+    }
+
+    body.login input[type="text"]:focus, 
+    body.login input[type="password"]:focus {
+        border-color: #f59e0b !important;
+        box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+    }
+
+    body.login .submit-row input {
+        background: #064e3b !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 4px !important;
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+    }
+
+    body.login .submit-row input:hover {
+        background: #059669 !important;
+    }
+  </style>
+{% endblock %}
